@@ -8,7 +8,7 @@ pip install flask
 ```
 pip install virtualenv
 virtualenv venv --python=python3.8.3
-# NOT ON WINDOWS = source venv/bin/activate
+# NOT ON WINDOWS = source venv/bin/activate or source venv/scripts/activate
 # ON WINDOWS = ./venv/Scripts/activate.bat
 ```
 > EXIT
