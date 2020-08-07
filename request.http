@@ -11,6 +11,12 @@ Content-Type: application/json
     "password": "password"
 }
 
+### Retrieve All Users
+GET http://localhost:5000/register
+Content-Type: application/json
+
+
+
 ### Login and get Access Token
 POST http://localhost:5000/auth
 Content-Type: application/json
@@ -21,13 +27,16 @@ Content-Type: application/json
 }
 
 
+##########################
+### AUTH
+#########################
+
+@Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTY5MTk3NjEsImlhdCI6MTU5NjgzMzM2MSwibmJmIjoxNTk2ODMzMzYxLCJpZGVudGl0eSI6MX0.TjoBC7fJM83aDHqP9k-6Z6zHeAPSUry47LPKAg-wqTo
+@Name = testing
+
 #########################
 ### ITEMS
 ########################
-
-
-@Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTY3NzI5MzAsImlhdCI6MTU5Njc3MjYzMCwibmJmIjoxNTk2NzcyNjMwLCJpZGVudGl0eSI6MX0.2W3gZNAJOZfAZpM7z3E_LIgfGw1DH7I1vXo4bHPRco8
-@Name = testing
 
 ### GET ALL ITEMS
 GET http://localhost:5000/items
@@ -45,7 +54,8 @@ Content-Type: application/json
 Authorization: JWT {{Token}}
 
 {
-    "price": 20.00
+    "price": 15.00,
+    "store_id": 1
 }
 
 ### Delete ITEM 
@@ -59,7 +69,33 @@ Authorization: JWT {{Token}}
 Content-Type: application/json
 
 {
-    "price": 20.99
+    "price": 1.99,
+      "store_id": 1
 }
 
 
+
+#################
+# STORES
+################
+@StoreName = AtyStore
+### GET ALL STORES
+GET http://localhost:5000/stores
+Content-Type: application/json
+Authorization: JWT {{Token}}
+
+
+### GET ONE STORE
+GET http://localhost:5000/store/{{StoreName}}
+Content-Type: application/json
+Authorization: JWT {{Token}}
+
+### CREATE STORE
+POST http://localhost:5000/store/{{StoreName}}
+Content-Type: application/json
+Authorization: JWT {{Token}}
+
+### Delete STORE 
+
+DELETE http://localhost:5000/store/{{StoreName}}
+Authorization: JWT {{Token}}

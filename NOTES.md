@@ -30,3 +30,8 @@ pip install Flask-JWT
 ```
 python code/create_tables.py
 ```
+
+### flask_sqlalchemy
+```
+pip install flask_sqlalchemy
+```
