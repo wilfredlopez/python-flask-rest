@@ -35,3 +35,31 @@ python code/create_tables.py
 ```
 pip install flask_sqlalchemy
 ```
+or 
+```
+pip install -U Flask-SQLAlchemy
+```
+
+### HEROKU DEPLOY
+1. create runtime.txt and add python version.  (example: python-3.8.3)
+2. create requirements.txt
+```txt
+Flask
+FlaskRESTful
+Flask-JWT
+Flask-SQLAlchemy
+uwsgi
+```
+3. create uwsgi.ini file
+```ini
+[uwsgi]
+http-socket = :$(PORT)
+master = true
+die-on-term=true
+module = app:app
+memory-report = true
+```
+4. create ProcFile
+```ProcFile
+web: uwsgi uwsgi.ini
+```
