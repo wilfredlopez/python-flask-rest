@@ -1,0 +1,65 @@
+#########################
+### AUTH
+########################
+
+### Register
+POST http://localhost:5000/register
+Content-Type: application/json
+
+{
+    "username": "wilfred",
+    "password": "password"
+}
+
+### Login and get Access Token
+POST http://localhost:5000/auth
+Content-Type: application/json
+
+{
+    "username": "wilfred",
+    "password": "password"
+}
+
+
+#########################
+### ITEMS
+########################
+
+
+@Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTY3NzI5MzAsImlhdCI6MTU5Njc3MjYzMCwibmJmIjoxNTk2NzcyNjMwLCJpZGVudGl0eSI6MX0.2W3gZNAJOZfAZpM7z3E_LIgfGw1DH7I1vXo4bHPRco8
+@Name = testing
+
+### GET ALL ITEMS
+GET http://localhost:5000/items
+Content-Type: application/json
+Authorization: JWT {{Token}}
+
+### GET ONE ITEM
+GET http://localhost:5000/item/{{Name}}
+Content-Type: application/json
+Authorization: JWT {{Token}}
+
+### CREATE ITEM
+POST http://localhost:5000/item/{{Name}}
+Content-Type: application/json
+Authorization: JWT {{Token}}
+
+{
+    "price": 20.00
+}
+
+### Delete ITEM 
+
+DELETE http://localhost:5000/item/{{Name}}
+Authorization: JWT {{Token}}
+
+### Update ITEM 
+PUT http://localhost:5000/item/{{Name}}
+Authorization: JWT {{Token}}
+Content-Type: application/json
+
+{
+    "price": 20.99
+}
+
+

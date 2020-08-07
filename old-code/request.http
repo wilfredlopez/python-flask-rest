@@ -1,0 +1,34 @@
+
+#########################
+### STORES
+########################
+
+### GET ALL STORES
+GET http://localhost:5000/stores
+Content-Type: application/json
+
+### CREATE STORE
+POST http://localhost:5000/stores
+Content-Type: application/json
+
+{
+    "name": "MyStore2"
+}
+
+### CREATE ITEM IN STORE
+POST http://localhost:5000/stores/MyStore2/item
+Content-Type: application/json
+
+{
+    "name": "item 1",
+    "price": 20.09
+}
+
+
+### GET STORES BY NAME
+GET  http://localhost:5000/stores/MyStore2
+
+### GET ITEMS IN STORE
+GET  http://localhost:5000/stores/MyStore2/items
+
+
