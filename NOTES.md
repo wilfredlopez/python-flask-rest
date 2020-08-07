@@ -41,7 +41,10 @@ pip install -U Flask-SQLAlchemy
 ```
 
 ### HEROKU DEPLOY
-1. create runtime.txt and add python version.  (example: python-3.8.3)
+1. Add runtime.txt to root of project.
+```txt
+python-3.8.3
+```
 2. create requirements.txt
 ```txt
 Flask
@@ -56,10 +59,14 @@ uwsgi
 http-socket = :$(PORT)
 master = true
 die-on-term=true
-module = app:app
+module = run:app
 memory-report = true
 ```
 4. create ProcFile
 ```ProcFile
 web: uwsgi uwsgi.ini
 ```
+
+5. Create project in Heroku from GIT and under settings add Buildpack. `heroku/python`
+
+6. Run Manual Deploy from GIT in Heroku project.
