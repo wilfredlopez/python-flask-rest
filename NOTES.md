@@ -52,6 +52,7 @@ FlaskRESTful
 Flask-JWT
 Flask-SQLAlchemy
 uwsgi
+psycopg2
 ```
 3. create uwsgi.ini file
 ```ini
@@ -70,3 +71,8 @@ web: uwsgi uwsgi.ini
 5. Create project in Heroku from GIT and under settings add Buildpack. `heroku/python`
 
 6. Run Manual Deploy from GIT in Heroku project.
+
+
+## Add HEROKU_POSTGRES
+1. Go to Addons and add Heroku Postgres
+2. Once you install it you will have a config variable named DATABASE_URL in heroku.
