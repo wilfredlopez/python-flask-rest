@@ -6,6 +6,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>My API</title>
     <style>
+    body{
+            background: white;
+            box-sizing: border-box;
+            font-family: sans-serif;
+    }
         .container {
             max-width: 500px;
             margin: 0 auto;
@@ -14,12 +19,27 @@
         pre {
             margin: 0;
             padding: 0;
+            overflow: hidden;
         }
 
         code {
-            color: #4a56bd;
-            font-size: 0.9rem;
-            font-weight: 600;
+        font-size: 1.1rem;
+        font-family: monospace;
+        }
+
+        pre[lang=comment] {
+         padding-top: 10px;
+         color: #358335;
+         font-family: serif;
+        }
+
+        pre[lang=json] {
+            color: #0e0ec7;
+            font-weight: 100;
+        }
+
+        h1{
+            text-align:center;
         }
 
         h2 {
@@ -30,17 +50,21 @@
     </style>
 </head>
 
-<body>
+<body style="margin: 0">
     <div class="container">
         <h1>Welcome to my API</h1>
         <h2>USAGE:</h2>
-        <pre>
-            <code name="http">
+        <pre lang="md">
+            <code lang="md">
+<pre lang="comment">
 #########################
 ### AUTH
 ########################
+</pre>
 
+<pre lang="comment">
 ### Register
+</pre>
 POST http://localhost:5000/register
 Content-Type: application/json
 
@@ -49,56 +73,107 @@ Content-Type: application/json
     "password": "password"
 }
 
+<pre lang="comment">
 ### Login and get Access Token
+</pre>
 POST http://localhost:5000/auth
 Content-Type: application/json
-
+<pre lang="json">
 {
     "username": "wilfred",
     "password": "password"
 }
+</pre>
 
+<pre lang="comment">
+##########################
+### TOKEN
+#########################
+</pre>
+@Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
 
+<pre lang="comment">
 #########################
 ### ITEMS
 ########################
-
-@Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTY3NjY2OTgsImlhdCI6MTU5Njc2NjM5OCwibmJmIjoxNTk2NzY2Mzk4LCJpZGVudGl0eSI6MX0.R9HOJldFWxDyKbV02Tt2bLP1VyJKeqPWW1_2SkUJdFM
+</pre>
 @Name = testing
 
+<pre lang="comment">
 ### GET ALL ITEMS
+</pre>
 GET http://localhost:5000/items
 Content-Type: application/json
-Authorization: JWT {Token}
 
+<pre lang="comment">
 ### GET ONE ITEM
+</pre>
 GET http://localhost:5000/item/{Name}
 Content-Type: application/json
-Authorization: JWT {Token}
 
+<pre lang="comment">
 ### CREATE ITEM
+</pre>
 POST http://localhost:5000/item/{Name}
 Content-Type: application/json
 Authorization: JWT {Token}
-
+<pre lang="json">
 {
-    "price": 20.00
+    "price": 15.00,
+    "store_id": 1
 }
+</pre>
 
+<pre lang="comment">
 ### Delete ITEM 
-
+</pre>
 DELETE http://localhost:5000/item/{Name}
 Authorization: JWT {Token}
 
+<pre lang="comment">
 ### Update ITEM 
+</pre>
 PUT http://localhost:5000/item/{Name}
 Authorization: JWT {Token}
 Content-Type: application/json
-
+<pre lang="json">
 {
-    "price": 15.99
+    "price": 1.99,
+    "store_id": 1
 }
+</pre>
 
+<pre lang="comment">
+#################
+# STORES
+################
+</pre>
+@StoreName = AtyStore
+
+<pre lang="comment">
+### GET ALL STORES
+</pre>
+GET http://localhost:5000/stores
+Content-Type: application/json
+
+<pre lang="comment">
+### GET ONE STORE
+</pre>
+GET http://localhost:5000/store/{StoreName}
+Content-Type: application/json
+
+<pre lang="comment">
+### CREATE STORE
+</pre>
+POST http://localhost:5000/store/{StoreName}
+Content-Type: application/json
+Authorization: JWT {Token}
+
+<pre lang="comment">
+### Delete STORE 
+</pre>
+DELETE http://localhost:5000/store/{StoreName}
+Authorization: JWT {Token}
             </code>
         </pre>
     </div>
