@@ -16,7 +16,6 @@ GET http://localhost:5000/register
 Content-Type: application/json
 
 
-
 ### Login and get Access Token
 POST http://localhost:5000/auth
 Content-Type: application/json
@@ -27,11 +26,13 @@ Content-Type: application/json
 }
 
 
+
+
 ##########################
 ### TOKEN
 #########################
 
-@Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTY5MTk3NjEsImlhdCI6MTU5NjgzMzM2MSwibmJmIjoxNTk2ODMzMzYxLCJpZGVudGl0eSI6MX0.TjoBC7fJM83aDHqP9k-6Z6zHeAPSUry47LPKAg-wqTo
+@Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTY4NTIzNzMsIm5iZiI6MTU5Njg1MjM3MywianRpIjoiNzA4MmEzNWQtMjk5YS00NjdmLTllNmEtZjk4ZWFlMTNjNTMzIiwiZXhwIjoxNTk2ODUzMjczLCJpZGVudGl0eSI6MSwiZnJlc2giOnRydWUsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpc19hZG1pbiI6dHJ1ZX19.q0bevWMGNjFdhoFS1EGnmqsqA-seW0lwwscjCQuiax0
 
 ##########################
 ### USER ROUTES
@@ -39,12 +40,23 @@ Content-Type: application/json
 ### Retrieve User by id
 GET http://localhost:5000/user/2
 Content-Type: application/json
-Authorization: JWT {{Token}}
+Authorization: Bearer {{Token}}
+
+### LOGOUT
+POST  http://localhost:5000/logout
+Content-Type: application/json
+Authorization: Bearer {{Token}}
 
 ### Delete User by id
 DELETE  http://localhost:5000/user/2
 Content-Type: application/json
-Authorization: JWT {{Token}}
+Authorization: Bearer {{Token}}
+
+### Get Access token with refresh token
+POST http://localhost:5000/refresh
+Content-Type: application/json
+Authorization: Bearer REFRESH_TOKEN_HERE
+
 
 #########################
 ### ITEMS
@@ -54,17 +66,17 @@ Authorization: JWT {{Token}}
 ### GET ALL ITEMS
 GET http://localhost:5000/items
 Content-Type: application/json
-Authorization: JWT {{Token}}
+Authorization: Bearer {{Token}}
 
 ### GET ONE ITEM
 GET http://localhost:5000/item/{{Name}}
 Content-Type: application/json
-Authorization: JWT {{Token}}
+Authorization: Bearer {{Token}}
 
 ### CREATE ITEM
 POST http://localhost:5000/item/{{Name}}
 Content-Type: application/json
-Authorization: JWT {{Token}}
+Authorization: Bearer {{Token}}
 
 {
     "price": 15.00,
@@ -74,12 +86,12 @@ Authorization: JWT {{Token}}
 ### Delete ITEM 
 
 DELETE http://localhost:5000/item/{{Name}}
-Authorization: JWT {{Token}}
+Authorization: Bearer {{Token}}
 
 ### Update ITEM 
 PUT http://localhost:5000/item/{{Name}}
-Authorization: JWT {{Token}}
 Content-Type: application/json
+Authorization: Bearer {{Token}}
 
 {
     "price": 1.99,
@@ -95,20 +107,20 @@ Content-Type: application/json
 ### GET ALL STORES
 GET http://localhost:5000/stores
 Content-Type: application/json
-Authorization: JWT {{Token}}
+Authorization: Bearer {{Token}}
 
 
 ### GET ONE STORE
 GET http://localhost:5000/store/{{StoreName}}
 Content-Type: application/json
-Authorization: JWT {{Token}}
+Authorization: Bearer {{Token}}
 
 ### CREATE STORE
 POST http://localhost:5000/store/{{StoreName}}
 Content-Type: application/json
-Authorization: JWT {{Token}}
+Authorization: Bearer {{Token}}
 
 ### Delete STORE 
 
 DELETE http://localhost:5000/store/{{StoreName}}
-Authorization: JWT {{Token}}
+Authorization: Bearer {{Token}}

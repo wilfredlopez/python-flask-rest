@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My API</title>
+    <title>Python Flask Flask-RESTful, Flask-JWT and Flask-SQLAlchemy API</title>
     <style>
     body{
             background: white;
@@ -52,26 +52,23 @@
 
 <body style="margin: 0">
     <div class="container">
-        <h1>Welcome to my API</h1>
+        <h1>Stores API </h1>
+        
+<p>Built with Python Flask Flask-RESTful, Flask-JWT and Flask-SQLAlchemy</p>
         <h2>USAGE:</h2>
         <pre lang="md">
             <code lang="md">
-<pre lang="comment">
-#########################
-### AUTH
-########################
-</pre>
-
 <pre lang="comment">
 ### Register
 </pre>
 POST http://localhost:5000/register
 Content-Type: application/json
-
+<pre lang="json">
 {
     "username": "wilfred",
     "password": "password"
 }
+</pre>
 
 <pre lang="comment">
 ### Login and get Access Token
@@ -86,9 +83,7 @@ Content-Type: application/json
 </pre>
 
 <pre lang="comment">
-##########################
 ### TOKEN
-#########################
 </pre>
 @Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9...
 
@@ -116,7 +111,7 @@ Content-Type: application/json
 </pre>
 POST http://localhost:5000/item/{Name}
 Content-Type: application/json
-Authorization: JWT {Token}
+Authorization: Bearer {Token}
 <pre lang="json">
 {
     "price": 15.00,
@@ -128,13 +123,13 @@ Authorization: JWT {Token}
 ### Delete ITEM 
 </pre>
 DELETE http://localhost:5000/item/{Name}
-Authorization: JWT {Token}
+Authorization: Bearer {Token}
 
 <pre lang="comment">
 ### Update ITEM 
 </pre>
 PUT http://localhost:5000/item/{Name}
-Authorization: JWT {Token}
+Authorization: Bearer {Token}
 Content-Type: application/json
 <pre lang="json">
 {
@@ -167,13 +162,47 @@ Content-Type: application/json
 </pre>
 POST http://localhost:5000/store/{StoreName}
 Content-Type: application/json
-Authorization: JWT {Token}
+Authorization: Bearer {Token}
 
 <pre lang="comment">
 ### Delete STORE 
 </pre>
 DELETE http://localhost:5000/store/{StoreName}
-Authorization: JWT {Token}
+Authorization: Bearer {Token}
+
+<pre lang="comment">
+##########################
+### OTHER ROUTES
+##########################
+</pre>
+
+<pre lang="comment">
+### Retrieve User by id
+</pre>
+GET http://localhost:5000/user/2
+Content-Type: application/json
+Authorization: Bearer {Token}
+
+<pre lang="comment">
+### LOGOUT
+</pre>
+POST  http://localhost:5000/logout
+Content-Type: application/json
+Authorization: Bearer {Token}
+
+<pre lang="comment">
+### Delete User by id
+</pre>
+DELETE  http://localhost:5000/user/2
+Content-Type: application/json
+Authorization: Bearer {Token}
+
+<pre lang="comment">
+### Get Access token with refresh token
+</pre>
+POST http://localhost:5000/refresh
+Content-Type: application/json
+Authorization: Bearer REFRESH_TOKEN_HERE
             </code>
         </pre>
     </div>
