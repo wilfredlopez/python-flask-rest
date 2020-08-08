@@ -1,6 +1,7 @@
 import sqlite3
 from flask_restful import Resource, reqparse
 from models.user import UserModel
+from flask_jwt import jwt_required
 
 
 class UserRegister(Resource):
@@ -19,3 +20,21 @@ class UserRegister(Resource):
             user.save()
             return {"message": "User Created Succesfully"}, 201
         return {'message': "User already exist"}, 400
+
+
+class User(Resource):
+    @jwt_required()
+    def get(Cls, user_id):
+        user = UserModel.find_by_id(user_id)
+        if user is None:
+            return {'message': 'User Not Found.'}, 404
+        return {'user': user.json()}, 200
+
+    @jwt_required()
+    def delete(Cls, user_id):
+        user = UserModel.find_by_id(user_id)
+        if user is None:
+            return {'message': None}, 404
+        else:
+            user.delete()
+        return {"message": "User Deleted."}

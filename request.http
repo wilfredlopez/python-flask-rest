@@ -11,7 +11,7 @@ Content-Type: application/json
     "password": "password"
 }
 
-### Retrieve All Users
+### Retrieve All Users (just for test)
 GET http://localhost:5000/register
 Content-Type: application/json
 
@@ -32,11 +32,24 @@ Content-Type: application/json
 #########################
 
 @Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJleHAiOjE1OTY5MTk3NjEsImlhdCI6MTU5NjgzMzM2MSwibmJmIjoxNTk2ODMzMzYxLCJpZGVudGl0eSI6MX0.TjoBC7fJM83aDHqP9k-6Z6zHeAPSUry47LPKAg-wqTo
-@Name = testing
+
+##########################
+### USER ROUTES
+##########################
+### Retrieve User by id
+GET http://localhost:5000/user/2
+Content-Type: application/json
+Authorization: JWT {{Token}}
+
+### Delete User by id
+DELETE  http://localhost:5000/user/2
+Content-Type: application/json
+Authorization: JWT {{Token}}
 
 #########################
 ### ITEMS
 ########################
+@Name = testing
 
 ### GET ALL ITEMS
 GET http://localhost:5000/items

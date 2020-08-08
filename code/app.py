@@ -3,7 +3,7 @@ from flask import Flask, render_template
 from flask_restful import Api
 from flask_jwt import JWT
 from security import authenticate, identity
-from resources.user import UserRegister
+from resources.user import UserRegister, User
 from resources.item import Item, Items
 from resources.store import Stores, Store
 from datetime import timedelta
@@ -16,6 +16,7 @@ app.config['SQLALCHEMY_DATABASE_URI'] = os.environ.get(
     'DATABASE_URL', 'sqlite:///data.db')  # ENV VARIABLE OR DEFAULT (data.db)
 
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
+app.config['PROPAGATE_EXCEPTIONS'] = True
 app.config['JWT_EXPIRATION_DELTA'] = timedelta(days=1)
 
 api = Api(app)
@@ -53,6 +54,7 @@ api.add_resource(Item, '/item/<string:name>')
 api.add_resource(Stores, '/stores')
 api.add_resource(Store, '/store/<string:name>')
 api.add_resource(UserRegister, '/register')
+api.add_resource(User, '/user/<int:user_id>')
 
 if __name__ == '__main__':
     from db import db

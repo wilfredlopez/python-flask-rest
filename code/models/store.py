@@ -17,7 +17,7 @@ class StoreModel(db.Model):
         self.name = name
 
     def json(self):
-        return {'name': self.name, 'items': [i.json() for i in self.items.all()]}
+        return {id: self.id, 'name': self.name, 'items': [i.json() for i in self.items.all()]}
 
     def save(self):
         db.session.add(self)
