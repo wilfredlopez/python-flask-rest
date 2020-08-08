@@ -116,7 +116,7 @@ Content-Type: application/json
 </pre>
 POST http://localhost:5000/item/{Name}
 Content-Type: application/json
-Authorization: JWT {Token}
+Authorization: Bearer {Token}
 <pre lang="json">
 {
     "price": 15.00,
@@ -128,13 +128,13 @@ Authorization: JWT {Token}
 ### Delete ITEM 
 </pre>
 DELETE http://localhost:5000/item/{Name}
-Authorization: JWT {Token}
+Authorization: Bearer {Token}
 
 <pre lang="comment">
 ### Update ITEM 
 </pre>
 PUT http://localhost:5000/item/{Name}
-Authorization: JWT {Token}
+Authorization: Bearer {Token}
 Content-Type: application/json
 <pre lang="json">
 {
@@ -167,13 +167,13 @@ Content-Type: application/json
 </pre>
 POST http://localhost:5000/store/{StoreName}
 Content-Type: application/json
-Authorization: JWT {Token}
+Authorization: Bearer {Token}
 
 <pre lang="comment">
 ### Delete STORE 
 </pre>
 DELETE http://localhost:5000/store/{StoreName}
-Authorization: JWT {Token}
+Authorization: Bearer {Token}
             </code>
         </pre>
     </div>

@@ -1,6 +1,6 @@
 import sqlite3
 from flask_restful import Resource, reqparse
-from flask_jwt import jwt_required
+from flask_jwt_extended import jwt_required
 from models.item import ItemModel
 
 
@@ -25,7 +25,7 @@ class Item(Resource):
         return {'item': item.json()}, 200
 
 # CREATE ITEM
-    @jwt_required()
+    @jwt_required
     def post(self, name):
         # parser only gets the arguments we specified by adding to parser.
         data = Item.parser.parse_args()
@@ -43,7 +43,7 @@ class Item(Resource):
 # Delele ITEM
 
 
-    @jwt_required()
+    @jwt_required
     def delete(self, name):
         item = ItemModel.find_by_name(name)
         if item is None:
@@ -52,7 +52,7 @@ class Item(Resource):
         return {'item': item.json()}, 202
 # UPDATE ITEM
 
-    @jwt_required()
+    @jwt_required
     def put(self, name):
         # parser only gets the arguments we specified by adding to parser.
         data = Item.parser.parse_args()

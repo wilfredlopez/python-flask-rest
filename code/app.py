@@ -1,9 +1,8 @@
 import os
 from flask import Flask, render_template
 from flask_restful import Api
-from flask_jwt import JWT
-from security import authenticate, identity
-from resources.user import UserRegister, User
+from flask_jwt_extended import JWTManager
+from resources.user import UserRegister, User, UserLogin
 from resources.item import Item, Items
 from resources.store import Stores, Store
 from datetime import timedelta
@@ -27,18 +26,11 @@ api = Api(app)
 def create_tables():
     db.create_all()
 
-# Creates endpoint to log in. POST: '/auth'
-# Accepts {username: '', password: ''}
-# @returns
-# {
-#   "access_token": "eyJ0eXAiOiJKV1..."
-# }
+
+jwt = JWTManager(app)
 
 
-jwt = JWT(app, authenticate, identity)
-
-
-@ app.route('/')
+@app.route('/')
 def home():
     return render_template('index.html')
 
@@ -55,6 +47,7 @@ api.add_resource(Stores, '/stores')
 api.add_resource(Store, '/store/<string:name>')
 api.add_resource(UserRegister, '/register')
 api.add_resource(User, '/user/<int:user_id>')
+api.add_resource(UserLogin, '/auth')
 
 if __name__ == '__main__':
     from db import db
