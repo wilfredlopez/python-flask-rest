@@ -16,7 +16,6 @@ GET http://localhost:5000/register
 Content-Type: application/json
 
 
-
 ### Login and get Access Token
 POST http://localhost:5000/auth
 Content-Type: application/json
@@ -27,12 +26,13 @@ Content-Type: application/json
 }
 
 
+
+
 ##########################
 ### TOKEN
 #########################
 
-
-@Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTY4NDk2MDQsIm5iZiI6MTU5Njg0OTYwNCwianRpIjoiZWViODJlNTctZGFiZC00Mzk1LTk2NDQtMGEzOGQwNGM0MDllIiwiZXhwIjoxNTk2ODUwNTA0LCJpZGVudGl0eSI6MSwiZnJlc2giOnRydWUsInR5cGUiOiJhY2Nlc3MifQ.a3xZOIDH_vPubVdHHMz1ELUwERlo91s5s5CbkFr-EuQ
+@Token = eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJpYXQiOjE1OTY4NTIzNzMsIm5iZiI6MTU5Njg1MjM3MywianRpIjoiNzA4MmEzNWQtMjk5YS00NjdmLTllNmEtZjk4ZWFlMTNjNTMzIiwiZXhwIjoxNTk2ODUzMjczLCJpZGVudGl0eSI6MSwiZnJlc2giOnRydWUsInR5cGUiOiJhY2Nlc3MiLCJ1c2VyX2NsYWltcyI6eyJpc19hZG1pbiI6dHJ1ZX19.q0bevWMGNjFdhoFS1EGnmqsqA-seW0lwwscjCQuiax0
 
 ##########################
 ### USER ROUTES
@@ -42,10 +42,21 @@ GET http://localhost:5000/user/2
 Content-Type: application/json
 Authorization: Bearer {{Token}}
 
+### LOGOUT
+POST  http://localhost:5000/logout
+Content-Type: application/json
+Authorization: Bearer {{Token}}
+
 ### Delete User by id
 DELETE  http://localhost:5000/user/2
 Content-Type: application/json
 Authorization: Bearer {{Token}}
+
+### Get Access token with refresh token
+POST http://localhost:5000/refresh
+Content-Type: application/json
+Authorization: Bearer REFRESH_TOKEN_HERE
+
 
 #########################
 ### ITEMS
